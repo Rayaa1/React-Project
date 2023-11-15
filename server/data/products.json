@@ -4,13 +4,15 @@
     "title": "Red Dress",
     "style": "Elegant",
     "price": "1200",
+    "description":"A red elegant dress exudes a timeless and sophisticated charm, captivating attention with its vibrant and striking hue. The color red is often associated with passion, confidence, and allure, making it a popular choice for special occasions and formal events.",
     "imageUrl": "https://www.mydressline.com/cdn/shop/files/Portia-_-Scarlett-PS22529-RED_1400x.jpg?v=1684454921"
     },
     "c64db398-91cd-487c-b900-86058c0422f8": {
       "_id": "c64db398-91cd-487c-b900-86058c0422f8",
-      "title": "Flower dress",
+      "title": "Floral dress",
       "style": "Casual",
       "price": "50",
+      "description":"A casual floral dress embodies effortless charm and a laid-back yet feminine aesthetic. With a comfortable and relaxed silhouette, this dress often features a playful pattern of blooming flowers, creating a whimsical and cheerful vibe. The fabric is light and breathable,  making it perfect for a sunny day out or a casual gathering. ",
       "imageUrl": "https://storage.googleapis.com/windsor-cms/media/2022/05/b963979d-18-casual-summer-dresses-2022.jpg"
   
   

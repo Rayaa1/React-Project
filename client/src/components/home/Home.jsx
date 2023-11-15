@@ -67,7 +67,7 @@ const Header = ()=>{
                 <div className="px-5 py-5 py-lg-0">
                   <h2 className="mb-4"><span>Fashion</span> Product</h2>
                   <p className="lead mb-4">Each product tells a story of style, quality, and individuality. Our carefully curated selection showcases a diverse range of fashion items that cater to your unique tastes and preferences.</p>
-                  <a className="bi-arrow-right ms-2"><Link to="/product">Explore Products</Link></a>
+                  <a className="bi-arrow-right ms-2"><Link to="/products">Explore Products</Link></a>
                 </div>
               </div>
             </div>

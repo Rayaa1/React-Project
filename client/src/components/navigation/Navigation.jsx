@@ -38,6 +38,10 @@ const Navigation = ()=>{
           <li className="nav-item">
             <a className="nav-link"><Link to="/contact">Contact</Link></a>
           </li>
+          
+          <li className="nav-item">
+            <a className="nav-link"><Link to="/products/create">Create Product</Link></a>
+          </li>
 
           <div className="d-none d-lg-block">
         <a className="nav-link"><Link to="/signIn">Sign In</Link></a>

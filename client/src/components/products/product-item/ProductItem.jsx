@@ -9,13 +9,13 @@ const ProductItem = ({
     price
 }) => {
     return (
-        <div class="col-lg-4 col-12 mb-3">
+        <div class="col-lg-3 col-12 mb-3">
             <div className="product-thumb">
                 <a >
                 <Link to={`/products/${_id}`}>
                 <img src={imageUrl} className="img-fluid product-image" alt="" />
                 </Link>
-                    
+    
                 </a>
                 <div class="product-top d-flex">
                     <a href="#" class="bi-heart-fill product-icon"></a>
