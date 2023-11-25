@@ -25,8 +25,8 @@ export default function ProductCreate() {
         <section id="create-page" className="auth">
       <form id="create" onSubmit={createProductSubmitHandler}>
         
-        <div className="container">
-            <img src="https://blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know-1024x576.png"  alt="" />
+        <div className="container-create">
+            <img className="create-img" src="https://blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know-1024x576.png"  alt="" />
             
           <h1>Create Product</h1>
 
@@ -42,7 +42,7 @@ export default function ProductCreate() {
 
           <div className="form-group">
             <label htmlFor="price">Price:</label>
-            <input type="text" id="style" name="style" placeholder="Enter product price..."  />
+            <input type="text" id="price" name="price" placeholder="Enter product price..."  />
           </div>
 
           <div className="form-group">
@@ -56,7 +56,7 @@ export default function ProductCreate() {
           </div>
 
           <div className="form-group">
-            <input className="btn custom-btn cart-btn" type="submit" value="Create Product" />
+            <input className="btn-custom" type="submit" value="Create Product" />
           </div>
         </div>
       </form>

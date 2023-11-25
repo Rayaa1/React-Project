@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as productService from '../../services/productsService';
+import "./productDetails.css"
 
 
 const ProductDetails = ()=> {
@@ -21,7 +22,7 @@ const ProductDetails = ()=> {
             <div className="row">
               <div className="col-lg-6 col-12">
                 <div className="product-thumb">
-                  <img src={product.imageUrl} className="img-fluid product-image" alt="" />
+                  <img src={product.imageUrl} className="img-detail product-image" alt="" />
                 </div>
               </div>
               <div className="col-lg-6 col-12">
@@ -32,10 +33,17 @@ const ProductDetails = ()=> {
                   </div>
                   <small className="product-price text-muted ms-auto mt-auto mb-5">${product.price}</small>
                 </div>
+                
                 <div className="product-description">
                   <strong className="d-block mt-4 mb-2">Description</strong>
                   <p className="lead mb-5">{product.description}</p>
                 </div>
+                <div className="btn-edit">
+                    <button type="submit" className="editBtn">Edit</button>
+                  </div>
+                  <div className="btn-edit">
+                    <button type="submit" className="editBtn">Remove</button>
+                  </div>
                 <div className="product-cart-thumb row">
                   <div className="col-lg-6 col-12">
                     <select className="form-select cart-form-select" id="inputGroupSelect01">
@@ -50,11 +58,14 @@ const ProductDetails = ()=> {
                   <div className="col-lg-6 col-12 mt-4 mt-lg-0">
                     <button type="submit" className="btn custom-btn cart-btn" data-bs-toggle="modal" data-bs-target="#cart-modal">Add to Cart</button>
                   </div>
-                 
                 </div>
+                
               </div>
+              
             </div>
+            
           </div>
+          
         </section>)
 
 }

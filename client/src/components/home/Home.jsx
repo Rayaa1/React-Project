@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 
+import "./home.css"
+
+
+
 const Header = ()=>{
-    return( <main>
-        <section className="slick-slideshow">   
-          <div className="slick-custom">
+    return( <main> 
+      <section id="home" className="slick-slideshow">
+<div className="slick-custom">
             <img src="images/slideshow/fashion-header.jpeg" className="img-fluid" alt="" />
             <div className="slick-bottom">
               <div className="container">
@@ -17,8 +21,9 @@ const Header = ()=>{
               </div>
             </div>
           </div>
-        
-        </section>
+</section> 
+          
+
         <section className="about section-padding">
           <div className="container">
             <div className="row">

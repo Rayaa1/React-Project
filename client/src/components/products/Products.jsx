@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as productsService from '../../services/productsService';
 import ProductItem from './product-item/ProductItem.jsx';
+import "./products.css"
+
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -17,6 +19,7 @@ const Products = () => {
                         <h1>
                             <span className="d-block text-primary">Choose your</span>
                             <span className="d-block text-dark">favorite style</span>
+                            
                 
                         </h1>
                         

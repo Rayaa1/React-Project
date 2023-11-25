@@ -1,25 +1,153 @@
-.site-header {
-    background-color: var(--section-bg-color);
-    position: relative;
-    overflow: hidden;
-    margin-top: 86px;
-  }
-  
-  .site-header.section-padding {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-  
-  .site-header.section-padding-img {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-  }
-  
-  .header-image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-  }
+.about-us-caption{
+  font-family: "Times New Roman", Times, serif;
+  color:black
+}
+.header-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+.site-header.section-padding-img {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+.team {
+  background: var(--grey-color);
+}
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
+}
+.team-thumb {
+  background: var(--white-color);
+  position: relative;
+  border-radius: 0.25rem;
+  padding: 42px 32px;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.text-muted {
+  color: #6c757d;
+}
+.custom-modal-btn {
+  background: var(--grey-color);
+  color: var(--white-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 32px;
+  width: 42px;
+  height: 42px;
+}
+
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #555;
+}
+
+.my-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-modal-dialog {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0;
+}
+
+.my-modal-content {
+  padding: 20px;
+}
+
+.my-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-modal-title {
+  margin-bottom: 10px;
+}
+
+.my-text-muted {
+  color: #6c757d;
+}
+
+.my-btn-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff; /* Change the color to white or another visible color */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2; 
+}
+
+.my-modal-body {
+  margin-top: 20px;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.row.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.my-social-icon {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.my-social-icon-link {
+  color: #000;
+  text-decoration: none;
+  margin-right: 10px;
+}
