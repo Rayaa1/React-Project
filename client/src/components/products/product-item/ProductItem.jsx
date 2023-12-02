@@ -14,17 +14,16 @@ const ProductItem = ({
     
     
         return (
-            <div class="col-lg-3 col-12 mb-3">
+            <div className="col-lg-3 col-12 mb-3">
                 <div className="product-thumb">
-                    <a >
-                        <Link to={`/products/${_id}`}>
+                    
+                        <Link to={`/products/${_id}/details`}>
                             <img src={imageUrl} className="img-fluid product-image" alt="" />
                         </Link>
 
-                    </a>
-                    <Link to="/wishlist"><div class="product-top d-flex">
-                        <a  class="bi-heart-fill product-icon"></a>
-                    </div></Link>
+                    <div className="product-top d-flex">
+                        <a  className="bi-heart-fill product-icon"></a>
+                    </div>
 
                     <div className="product-info d-flex">
                         <div>

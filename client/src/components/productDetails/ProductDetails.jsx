@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as productService from '../../services/productsService';
 import "./productDetails.css"
 
+import { Link } from 'react-router-dom';
+
+
 
 const ProductDetails = ()=> {
+  const navigate = useNavigate();
     const [product, setProduct] = useState({});
     
     const { productId } = useParams();
@@ -14,7 +18,15 @@ const ProductDetails = ()=> {
 
     }, [productId]);
 
-    
+    const deleteButtonClickHandler = async () => {
+      const hasConfirmed = confirm(`Are you sure you want to delete ${product.title}`);
+
+      if (hasConfirmed) {
+          await productService.remove(productId);
+
+          navigate('/products');
+      }
+  }
 
     return(
         <section className="product-detail section-padding">
@@ -39,10 +51,11 @@ const ProductDetails = ()=> {
                   <p className="lead mb-5">{product.description}</p>
                 </div>
                 <div className="btn-edit">
-                    <button type="submit" className="editBtn">Edit</button>
+                <Link className="editBtn" to={`/products/${product._id}/edit`}>Edit</Link>
+                
                   </div>
                   <div className="btn-edit">
-                    <button type="submit" className="editBtn">Remove</button>
+                  <button className="deleteBtn" onClick={deleteButtonClickHandler}>Delete</button>
                   </div>
                 <div className="product-cart-thumb row">
                   <div className="col-lg-6 col-12">

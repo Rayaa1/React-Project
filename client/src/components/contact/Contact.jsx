@@ -1,3 +1,4 @@
+import { Wheather } from "../wheather/Wheather.jsx"
 import "./contact.css"
 const Contact = ()=>{
     return(<div>
@@ -62,6 +63,7 @@ const Contact = ()=>{
                     <p className="text-muted">Svilengrad 6500,
                     ul.Elin Pelin 7</p>
                   </div>
+          
                   <div className="col-6 border-top contact-info">
                     <h6 className="mb-3">Our Socials</h6>
                     <ul className="social-icon">
@@ -71,6 +73,7 @@ const Contact = ()=>{
                       <li><a href="https://www.whatsapp.com/" className="social-icon-link bi-whatsapp" /></li>
                     </ul>
                   </div>
+                  <Wheather/>
                 </div>
               </div>
             </div>

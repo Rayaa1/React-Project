@@ -2,21 +2,20 @@ import * as request from '../lib/request';
 
 const baseUrl = 'http://localhost:3030/jsonstore/comments';
 
-export const getAll = async (productId) => {
+export const getAll = async (gameId) => {
     const query = new URLSearchParams({
-        where: `productId="${productId}"`
+        where: `gameId="${gameId}"`,
+        load: `owner=_ownerId:users`,
     });
 
-    const result = await request.get(`${baseUrl}`);
+    const result = await request.get(`${baseUrl}?${query}`);
 
-    // TODO: temp solution until migration to collections service 
-    return Object.values(result).filter(comment => comment.gameId === productId);
+    return result;
 };
 
-export const create = async (productId, username, text) => {
+export const create = async (gameId, text) => {
     const newComment = await request.post(baseUrl, {
-        productId,
-        username, 
+        gameId,
         text,
     });
 

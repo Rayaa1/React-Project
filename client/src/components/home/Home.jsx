@@ -4,7 +4,7 @@ import "./home.css"
 
 
 
-const Header = ()=>{
+const Home = ()=>{
     return( <main> 
       <section id="home" className="slick-slideshow">
 <div className="slick-custom">
@@ -82,4 +82,4 @@ const Header = ()=>{
       </main>)
 }
 
-export default Header
+export default Home

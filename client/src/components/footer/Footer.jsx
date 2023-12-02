@@ -14,10 +14,10 @@ const Footer = () => {
             <div className="col-lg-5 col-8">
               <h5 className="text-white mb-3">Sitemap</h5>
               <ul className="footer-menu d-flex flex-wrap">
-                <li className="footer-menu-item"><a className="footer-menu-link"><Link to="/home">Home</Link></a></li>
-                <li className="footer-menu-item"><a  className="footer-menu-link"><Link to="/products">Products</Link></a></li>
-                <li className="footer-menu-item"><a className="footer-menu-link"><Link to="/contact">Contact</Link></a></li>
-                <li className="footer-menu-item"><a className="footer-menu-link"><Link to="/story">Story</Link></a></li>
+                <li className="footer-menu-item"><Link className="footer-menu-link" to="/home">Home</Link></li>
+                <li className="footer-menu-item"><Link className="footer-menu-link" to="/products">Products</Link></li>
+                <li className="footer-menu-item"><Link className="footer-menu-link" to="/contact">Contact</Link></li>
+                <li className="footer-menu-item"><Link  className="footer-menu-link" to="/story">Story</Link></li>
                
               </ul>
             </div>

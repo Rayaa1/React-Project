@@ -18,3 +18,9 @@ export const create = async (productData) => {
 
     return result;
 };
+export const edit = async (productId, productData) => {
+    const result = await request.patch(`${baseUrl}/${productId}`, productData);
+
+    return result;
+};
+export const remove = async (productId) => request.remove(`${baseUrl}/${productId}`);

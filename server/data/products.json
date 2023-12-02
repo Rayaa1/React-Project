@@ -7,8 +7,8 @@
     "description":"A red elegant dress exudes a timeless and sophisticated charm, captivating attention with its vibrant and striking hue. The color red is often associated with passion, confidence, and allure, making it a popular choice for special occasions and formal events.",
     "imageUrl": "https://www.mydressline.com/cdn/shop/files/Portia-_-Scarlett-PS22529-RED_1400x.jpg?v=1684454921"
     },
-    "c64db398-91cd-487c-b900-86058c0422f8": {
-      "_id": "c64db398-91cd-487c-b900-86058c0422f8",
+    "c64db398-91cd-487c-b900-86058c0422f": {
+      "_id": "c64db398-91cd-487c-b900-86058c0422f",
       "title": "Floral dress",
       "style": "Casual",
       "price": "50",
@@ -17,6 +17,7 @@
   
   
       }
+    
   }
   
     
