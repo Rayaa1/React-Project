@@ -1,0 +1,18 @@
+.site-header {
+    background-color: var(--section-bg-color);
+    position: relative;
+    overflow: hidden;
+    margin-top: 86px;
+  }
+  
+  .site-header.section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  
+  .site-header.section-padding-img {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+  
+ 

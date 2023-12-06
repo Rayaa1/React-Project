@@ -24,7 +24,7 @@ export const AuthProvider = ({
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.email, values.password);
+        const result = await authService.register(values.email,values.name, values.password);
 
         setAuth(result);
 
@@ -43,6 +43,7 @@ export const AuthProvider = ({
         registerSubmitHandler,
         logoutHandler,
         email: auth.email,
+        name: auth.name,
         userId: auth._id,
         isAuthenticated: !!auth.accessToken,
     };

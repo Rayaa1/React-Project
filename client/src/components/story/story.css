@@ -151,3 +151,38 @@ section {
   text-decoration: none;
   margin-right: 10px;
 }
+.site-header {
+  background-color: var(--section-bg-color);
+  position: relative;
+  overflow: hidden;
+  margin-top: 86px;
+}
+
+.site-header.section-padding {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.site-header.section-padding-img {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+.custom-circle-image {
+  border-radius: 100px;
+  width: 55px;
+  height: 55px;
+}
+
+.custom-circle-image.team-image {
+  width: 85px;
+  height: 85px;
+}
+
+.header-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -12,6 +12,7 @@ const SignUp = ()=>{
   const { registerSubmitHandler } = useContext(AuthContext);
   const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
       [RegisterFormKeys.Email]: '',
+      [RegisterFormKeys.Name]: '',
       [RegisterFormKeys.Password]: '',
       [RegisterFormKeys.ConfirmPassword]: '',
   });
@@ -32,6 +33,18 @@ const SignUp = ()=>{
                         placeholder='Email'
                         onChange={onChange}
                         values={values[RegisterFormKeys.Email]}
+                    />
+                  
+                </div>
+
+                <div className="form-floating my-4">
+                <input
+                        type="name"
+                        id="name"
+                        name="name"
+                        placeholder='Name'
+                        onChange={onChange}
+                        values={values[RegisterFormKeys.Name]}
                     />
                   
                 </div>

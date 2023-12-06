@@ -83,7 +83,7 @@ const Story = () => {
         </section>
         
 
-        <section className="testimonial-section-padding">
+        
           <div className="container">
             <div className="row">
               <div className="col-lg-9 mx-auto col-11">
@@ -99,7 +99,7 @@ const Story = () => {
               </div>
             </div>
           </div>
-        </section>
+       
       </div>
       
     </main>
