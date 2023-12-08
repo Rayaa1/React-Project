@@ -1,4 +1,9 @@
-.form-floating>.form-control, .form-floating>.form-select {
-    height: calc(3.5rem + 2px);
-    padding: 1rem 0.75rem;
-}
+
+.errorMessage {
+    color: red; 
+    font-size: 18px;
+    margin-top: 5px; 
+    text-align: center;
+  }
+ 
+  

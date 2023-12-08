@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import "./signIn.css"
 import useForm from "../../hooks/useForm";
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import AuthContext from '../../contexts/authContext.jsx';
 
 
@@ -13,10 +13,36 @@ const LoginFormKeys = {
 
 export default function SignIn() {
   const { loginSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+  const [error, setError] = useState(null);
+  const { values, onChange, onSubmit } =useForm(async () => {
+    if(!values.email){
+      setError('Email is required.');
+      return;
+    }
+    if(!values.password){
+      setError('Password is required.');
+      return;
+    }
+    if (values.password.length < 5) {
+      setError('Password must be at least 5 characters long.');
+      return;
+    }
+
+    try {
+    
+      await loginSubmitHandler(values);
+      
+      setError(null);
+    } catch (error) {
+      
+      setError(error.message || 'An error occurred during login.');
+    }
+  }, {
     [LoginFormKeys.Email]: '',
     [LoginFormKeys.Password]: '',
   });
+  
+
 
   return (
     <section id="sign-in" className="sign-in-form section-padding">
@@ -35,7 +61,9 @@ export default function SignIn() {
                       placeholder='Email'
                       onChange={onChange}
                       value={values[LoginFormKeys.Email]}
+                     
                     />
+                    
                     
                   </div>
                   <div className="form-floating p-0">
@@ -46,16 +74,20 @@ export default function SignIn() {
                       name={LoginFormKeys.Password}
                       onChange={onChange}
                       value={values[LoginFormKeys.Password]}
+                      
                     />
-                    
+
                   </div>
-                  <button type="submit" className="btn custom-btn form-control mt-4 mb-3">
+                  {error && <p className="text-danger">{error}</p>}
+                  <button type="submit" className="btn custom-btn form-control mt-4 mb-3" >
                     Sign in
                   </button>
+                  
                   <p className="text-center">
                     Don’t have an account? <Link to="/signUp">Sign Up</Link>
                   </p>
                 </form>
+                
               </div>
             </div>
           </div>

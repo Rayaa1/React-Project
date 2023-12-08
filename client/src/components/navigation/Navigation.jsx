@@ -27,6 +27,7 @@ const Navigation = () => {
               {isAuthenticated && (
                 <div id="user">
                   <Link className="nav-link" to="/products/create">Create Product</Link>
+                  <Link className="bi-bag custom-icon" to="/cart"></Link>
                   <Link className="nav-link" to="/logout">Logout</Link>
                   <span>| {name}</span>
                   

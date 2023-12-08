@@ -8,15 +8,20 @@
 
 .editBtn{
     border-radius: 50%;
+    text-align: center;
     padding: 16px;
     background-color: #000000;
      color: white;
      width: 16%;
      float: left;
      font-size: 17px
+     
+
 }
+
 .deleteBtn{
   border-radius: 50%;
+  text-align: center;
   padding: 16px;
   background-color: #000000;
    color: white;
@@ -98,21 +103,7 @@
     color: #888;
   }
 
-  .star-rating {
-    display: flex;
-    margin-top: 10px;
-  }
-  
-  .star {
-    font-size: 24px;
-    cursor: pointer;
-    color: #020202;
-    margin-right: 5px;
-  }
-  
-  .star.selected {
-    color: #f0f016; /* Color for selected stars */
-  }
+
 
   .del-btn {
     background-color: #dc3545; /* Bootstrap's danger color */

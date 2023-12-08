@@ -18,6 +18,8 @@ import Logout from "./components/logout/Logout.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import AuthGuard from "./guards/AuthGuard.jsx";
 
+import CartPage from "./components/productDetails/Cart.jsx";
+
 
 
 
@@ -29,6 +31,7 @@ function App() {
   return (
     <ErrorBoundary>
     <AuthProvider>
+    
 <div>
   
 <Navigation/>
@@ -47,6 +50,7 @@ function App() {
 
 <Route element={<AuthGuard />}>
 <Route path="/products/create" element={<ProductCreate />} />
+<Route path="/cart" element={<CartPage />} />
 <Route path='/logout' element={<Logout />} />
 <Route path='/products/:productId/edit' element={<Edit />} />
 </Route>

@@ -1,20 +1,45 @@
 import { Link } from 'react-router-dom';
 import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+
 
 const RegisterFormKeys = {
   Email: 'email',
   Password: 'password',
   ConfirmPassword: 'confirm-password',
+  Name: 'name',
 };
 const SignUp = ()=>{
   const { registerSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-      [RegisterFormKeys.Email]: '',
-      [RegisterFormKeys.Name]: '',
-      [RegisterFormKeys.Password]: '',
-      [RegisterFormKeys.ConfirmPassword]: '',
+  const [error, setError] = useState(null);
+  const { values, onChange, onSubmit } = useForm(async () => {
+    if(!values[RegisterFormKeys.Email] || !values[RegisterFormKeys.Password]||!values[RegisterFormKeys.ConfirmPassword]||!values[RegisterFormKeys.Name]){
+      setError('All fields are required.');
+      return;
+    }
+    if (values.password.length < 5) {
+      setError('Password must be at least 5 characters long.');
+      return;
+    }else if(values[RegisterFormKeys.Password] !== values[RegisterFormKeys.ConfirmPassword]){
+      setError('Password don\'t match.');
+      return;
+    }
+
+    try {
+    
+      await registerSubmitHandler(values);
+      
+      setError(null);
+    } catch (error) {
+      
+      setError(error.message || 'An error occurred during registration.');
+    }
+  }, {
+    [RegisterFormKeys.Email]: '',
+    [RegisterFormKeys.Name]: '',
+    [RegisterFormKeys.Password]: '',
+    [RegisterFormKeys.ConfirmPassword]: '',
   });
     return( <section className="sign-up-form section-padding">
     <div className="container">
@@ -71,6 +96,7 @@ const SignUp = ()=>{
                     />
                   
                 </div>
+                {error && <p className="text-danger">{error}</p>}
                 <button type="submit" className="btn custom-btn form-control mt-4 mb-3">
                   Create account
                 </button>

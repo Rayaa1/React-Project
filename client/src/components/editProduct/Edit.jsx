@@ -3,8 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as productService from '../../services/productsService';
 
-const Edit = ()=>{
+const Edit = () => {
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const { productId } = useParams();
     const [product, setProduct] = useState({
         title: '',
@@ -13,6 +14,10 @@ const Edit = ()=>{
         imageUrl: '',
         description: '',
     });
+    const isValidImageUrl = (url) => {
+        const pattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+        return pattern.test(url);
+    };
 
     useEffect(() => {
         productService.getOne(productId)
@@ -30,15 +35,29 @@ const Edit = ()=>{
             imageUrl: e.target.imageUrl.value,
             description: e.target.description.value,
         }
+        if (!updatedProduct.title || !updatedProduct.style || !updatedProduct.price || !updatedProduct.imageUrl || !updatedProduct.description) {
+            setError("All fields are required.");
+            return;
+        } else if (updatedProduct.description.length < 6) {
+            setError('Description must be more than 6 characters')
+            return
+        }
+        if (!isValidImageUrl(updatedProduct.imageUrl)) {
+            setError("Please enter a valid image URL starting with 'http://' or 'https://'.");
+            return;
+        }
+        if (isNaN(+updatedProduct.price)) {
+            setError("Please enter a valid numeric price.")
+            return
+        }
 
         try {
-           
+
             await productService.edit(productId, updatedProduct);
 
             navigate('/products');
         } catch (err) {
-            // Error notification
-            console.log(err);
+            setError(err.message || 'An error occurred while editing the product.');
         }
     }
 
@@ -81,7 +100,7 @@ const Edit = ()=>{
                         <label htmlFor="description">Description:</label>
                         <textarea name="description" id="description" value={product.description} onChange={onChange}></textarea>
                     </div>
-
+                    {error && <p className="text-danger">{error}</p>}
                     <div className="form-group">
                         <input className="btn-custom" type="submit" value="Edit Product" />
                     </div>
@@ -89,7 +108,7 @@ const Edit = ()=>{
             </form>
         </section>
 
-       
+
     );
 }
 export default Edit

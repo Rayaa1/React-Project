@@ -5,19 +5,12 @@ import * as reviewService from '../../services/reviewService';
 import "./productDetails.css"
 import reducer from './reviewsReducer';
 import useForm from '../../hooks/useForm';
-
+import { cartService } from '../../services/cartService';
 import { Link } from 'react-router-dom';
 import AuthContext from "../../contexts/authContext.jsx";
+import StarRating from "../starRating/StarRating.jsx";
 
-const StarRating = ({ rating }) => {
-  const stars = Array.from({ length: 5 }, (_, index) => (
-    <span key={index} className={index < rating ? 'star selected' : 'star'}>
-      &#9733; 
-    </span>
-  ));
 
-  return <div className="star-rating">{stars}</div>;
-};
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -25,7 +18,9 @@ const ProductDetails = () => {
   const { name, userId } = useContext(AuthContext);
   const [reviews, dispatch] = useReducer(reducer, []);
   const [selectedRating, setSelectedRating] = useState(0);
- 
+  const [isProductInCart, setIsProductInCart] = useState(false);
+
+
   const { productId } = useParams();
   useEffect(() => {
     productService.getOne(productId)
@@ -36,7 +31,15 @@ const ProductDetails = () => {
           type: 'GET_ALL_REVIEWS',
           payload: result,
         });
+        
       });
+      const checkProductInCart = async () => {
+        const cartData = await cartService.getCart();
+        setIsProductInCart(cartData.some(item => item.productId === productId));
+      };
+  
+      checkProductInCart();
+  
 
   }, [productId]);
   const addReviewHandler = async (values) => {
@@ -54,7 +57,9 @@ const ProductDetails = () => {
       payload: newReview
     })
     setSelectedRating(0);
+    navigate("/products")
   }
+
 
   const deleteButtonClickHandler = async () => {
     const hasConfirmed = confirm(`Are you sure you want to delete ${product.title}`);
@@ -65,23 +70,45 @@ const ProductDetails = () => {
       navigate('/products');
     }
   }
+
   const deleteReviewHandler = async (reviewId) => {
     const hasConfirmed = confirm("Are you sure you want to delete this review?");
 
     if (hasConfirmed) {
-      
-      
+
+
       dispatch({
         type: 'DELETE_REVIEW',
         payload: reviewId,
       });
 
-      // Call the reviewService remove function to delete the review on the backend
+
       await reviewService.remove(reviewId);
     }
-    
-  };
 
+  };
+  
+  const handleAddToCart = async () => {
+    try {
+      if (!isProductInCart) {
+        const productData = {
+          productId: product._id,
+          title: product.title,
+          price: product.price,
+          owner: product._ownerId,
+          imageUrl: product.imageUrl,
+        };
+
+        await cartService.addToCart(productData);
+        setIsProductInCart(true);
+        navigate("/cart");
+      }else {
+        alert('This product is already in your cart')
+      }
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
+  };
   const { values, onChange, onSubmit } = useForm(addReviewHandler, {
     review: '',
   });
@@ -117,47 +144,44 @@ const ProductDetails = () => {
               </div>
             )}
 
-
-            <div className="product-cart-thumb row">
-              <div className="col-lg-6 col-12">
-                <select className="form-select cart-form-select" id="inputGroupSelect01">
-                  <option selected>Quantity</option>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                </select>
+            
+              <div className="product-cart-thumb row">
+                <div className="col-lg-6 col-12 mt-4 mt-lg-0">
+                {userId && userId !== product._ownerId && (
+                  <button
+                    type="button"
+                    className="btn custom-btn cart-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cart-modal"
+                    onClick={handleAddToCart}
+                  >
+                    Add to Cart
+                  </button>
+                  )}
+                </div>
               </div>
-              <div className="col-lg-6 col-12 mt-4 mt-lg-0">
-                <button type="submit" className="btn custom-btn cart-btn" data-bs-toggle="modal" data-bs-target="#cart-modal">Add to Cart</button>
-              </div>
-            </div>
-            <div className="details-reviews">
-              <h2>Reviews:</h2>
-              <ul>
-                {reviews.map(({ _id, text, owner: { name }, rating ,userId}) => (
-                  
-                  <li key={_id} className="review">
-                    <p>{name}: {text} </p>
-                    <StarRating rating={rating} />
-                    
-                    <button className="del-btn" onClick={() => deleteReviewHandler(_id)}>
-                      Delete Review
-                    </button>
-
-                  </li>
-                ))}
-               
-              </ul>
-
-
-              {reviews.length === 0 && (
-                <p className="no-review">No reviews.</p>
-              )}
-            </div>
+             
+            
           </div>
-          {userId !== product._ownerId && (<article className="create-review">
+          {userId && userId !== product._ownerId && (
+          <div className="details-reviews">
+              <h2>Reviews:</h2>
+              {reviews.length === 0 ? (
+                <p className="no-review">No reviews.</p>
+              ):  <ul>
+              {reviews.map(({ _id, text, owner: { name, _id: ownerId }, rating }) => (
+                <li key={_id} className="review">
+                  <p>{name}: {text} </p>
+                  <StarRating rating={rating} />
+                  {userId === ownerId && (<button className="del-btn" onClick={() => deleteReviewHandler(_id)}>
+                    Delete Review
+                  </button>)}
+                </li>
+              ))}
+            </ul>}
+            </div>
+          )}
+          {userId && userId !== product._ownerId && (<article className="create-review">
             <label>Add new review:</label>
 
             <form className="form" onSubmit={onSubmit}>
@@ -171,7 +195,7 @@ const ProductDetails = () => {
                     className={`star ${star <= selectedRating ? 'selected' : ''}`}
                     onClick={() => setSelectedRating(star)}
                   >
-                    &#9733; 
+                    &#9733;
                   </span>
                 ))}
               </div>

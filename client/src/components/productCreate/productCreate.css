@@ -10,7 +10,12 @@ h1 {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.errorMessage {
+  color: red; 
+  font-size: 18px;
+  margin-top: 5px; 
+  text-align: center;
+}
 .create-img {
   max-width: 100%;
   height: auto;

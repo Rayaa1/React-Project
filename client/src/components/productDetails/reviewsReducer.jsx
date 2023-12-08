@@ -5,7 +5,10 @@ const reducer = (state, action) => {
         case 'ADD_REVIEW':
             return [...state, action.payload];
         case 'DELETE_REVIEW':
-            return state.filter(review => review._id !== action.payload)
+            return state.filter(review => review._id !== action.payload);
+        case 'EDIT_REVIEW':
+            return state.map(c => c._id === action.payload._id ? { ...c, text: action.payload.text } : c)
+
         default:
             return state;
     }

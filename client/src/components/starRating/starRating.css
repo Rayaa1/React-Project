@@ -1,0 +1,15 @@
+.star-rating {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #020202;
+    margin-right: 5px;
+  }
+  
+  .star.selected {
+    color: #f0f016; /* Color for selected stars */
+  }
