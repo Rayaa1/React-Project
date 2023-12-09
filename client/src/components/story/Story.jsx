@@ -73,8 +73,6 @@ const Story = () => {
               </div>
               <div className="my-modal-body">
                 <h5 className="mb-4">{modalDetails.bio}</h5>
-
-
               </div>
             </div>
           </div>

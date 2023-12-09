@@ -1,20 +1,13 @@
 import { Link } from "react-router-dom";
 import "./productItem.css"
 
-
-
-
 const ProductItem = ({
     _id,
     title,
     style,
     imageUrl,
     price,
-
-
 }) => {
-
-
 
     return (
         <div className="col-lg-3 col-12 mb-3">

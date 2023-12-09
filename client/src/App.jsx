@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { Suspense } from 'react';
 import Footer from './components/footer/Footer.jsx'
 import SignIn from "./components/signIn/SignIn.jsx";
 import Navigation from "./components/navigation/Navigation.jsx";
@@ -35,7 +34,7 @@ function App() {
 <div>
   
 <Navigation/>
-<Suspense fallback={<h1>Loading...</h1>}>
+
 
 
 <Routes>
@@ -59,7 +58,7 @@ function App() {
 
 
 <Footer/>
-</Suspense>
+
 </div>
 
 </AuthProvider>
